@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'contact_link.dart';
 import 'info_text.dart';
 import 'profile_section.dart';
 import 'skill_chip_wrap.dart';
@@ -44,12 +45,30 @@ class ProfileContentSections extends StatelessWidget {
               InfoText(
                 'Kayan Brand — E-commerce App\nFlutter, Dart, Clean Architecture, REST APIs (2026)\n• Feature-rich e-commerce mobile app with responsive UI.\n• Clean Architecture with Singleton pattern for scalable code.\n• Seamless API integrations and real-time inventory sync.',
               ),
+              ContactLink(
+                label: 'View Project',
+                url: 'https://github.com/asaerxd6767/Kayan_Brand',
+                icon: Icons.open_in_new,
+              ),
+              SizedBox(height: 8),
               InfoText(
                 'AI Colorectal Cancer Assistant — RAG Pipeline\nPython, Next.js, Chroma, NLP (2026)\n• RAG pipeline for NICE clinical guidelines.\n• Structure-aware chunking with multilingual-e5-base embeddings.\n• Bilingual chat interface with private analysis dashboard.',
               ),
+              ContactLink(
+                label: 'View Project',
+                url: 'https://ai-project-for-hackathon.vercel.app/',
+                icon: Icons.open_in_new,
+              ),
+              SizedBox(height: 8),
               InfoText(
                 'Noor — Islamic Mobile App\nFlutter, Dart, Local Storage, Web Hosting (2026)\n• Prayer times, daily Azkar, and integrated Quran reader.\n• Persistent local storage with offline support.\n• Light/Dark modes, responsive design, Firebase hosting.',
               ),
+              ContactLink(
+                label: 'View Project',
+                url: 'https://final-project-84d31.web.app/#/setup',
+                icon: Icons.open_in_new,
+              ),
+              SizedBox(height: 8),
               InfoText(
                 'Nafi3 — Smart Donation Platform\nSystem Design, Web Development (2026)\n• Connects donors with verified charities through transparent tracking.\n• Smart matching based on location, urgency, and category.',
               ),
@@ -100,7 +119,7 @@ class ProfileContentSections extends StatelessWidget {
             icon: Icons.language_outlined,
             children: [
               InfoText(
-                '• Arabic — Native\n• English — Very Good',
+                '• Arabic — Native\n• English — B2',
               ),
             ],
           ),
@@ -108,8 +127,31 @@ class ProfileContentSections extends StatelessWidget {
             title: 'Contact',
             icon: Icons.alternate_email,
             children: [
-              InfoText(
-                'mohammedasser070@gmail.com\nMinya, Egypt\nLinkedIn: linkedin.com/in/asser-mohammed\nGitHub: github.com/asaerxd6767\nCodeforces: codeforces.com/profile/asser_mohammed',
+              InfoText('Minya, Egypt'),
+              ContactLink(
+                label: '+20 104 092 0123',
+                url: 'tel:+201040920123',
+                icon: Icons.phone,
+              ),
+              ContactLink(
+                label: 'mohammedasser070@gmail.com',
+                url: 'mailto:mohammedasser070@gmail.com',
+                icon: Icons.email,
+              ),
+              ContactLink(
+                label: 'linkedin.com/in/asser-mohammed',
+                url: 'https://linkedin.com/in/asser-mohammed',
+                icon: Icons.work,
+              ),
+              ContactLink(
+                label: 'github.com/asaerxd6767',
+                url: 'https://github.com/asaerxd6767',
+                icon: Icons.code,
+              ),
+              ContactLink(
+                label: 'codeforces.com/profile/asser_mohammed',
+                url: 'https://codeforces.com/profile/asser_mohammed',
+                icon: Icons.sports,
               ),
             ],
           ),
