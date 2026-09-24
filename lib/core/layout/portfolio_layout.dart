@@ -138,70 +138,72 @@ class _PortfolioLayoutState extends State<PortfolioLayout> {
   Widget _buildMobileNav() {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
-    return Container(
-      height: 56,
-      decoration: BoxDecoration(
-        color: isDark ? const Color(0xFF111827) : Colors.white,
-        border: Border(
-          bottom: BorderSide(
-            color: isDark ? const Color(0xFF1F2937) : const Color(0xFFE5E7EB),
+    return SafeArea(
+      child: Container(
+        height: 60,
+        decoration: BoxDecoration(
+          color: isDark ? const Color(0xFF111827) : Colors.white,
+          border: Border(
+            bottom: BorderSide(
+              color: isDark ? const Color(0xFF1F2937) : const Color(0xFFE5E7EB),
+            ),
           ),
         ),
-      ),
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        padding: const EdgeInsets.symmetric(horizontal: 16),
-        itemCount: widget.sections.length,
-        itemBuilder: (context, index) {
-          final section = widget.sections[index];
-          final isActive = index == _activeSection;
-
-          return GestureDetector(
-            onTap: () => _scrollToSection(index),
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              alignment: Alignment.center,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                    section.icon,
-                    size: 20,
-                    color: isActive
-                        ? const Color(0xFF4F46E5)
-                        : (isDark
-                              ? const Color(0xFF9CA3AF)
-                              : const Color(0xFF6B7280)),
-                  ),
-                  const SizedBox(height: 4),
-                  Text(
-                    section.label,
-                    style: TextStyle(
-                      fontSize: 11,
-                      fontWeight: isActive ? FontWeight.w600 : FontWeight.w400,
+        child: ListView.builder(
+          scrollDirection: Axis.horizontal,
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          itemCount: widget.sections.length,
+          itemBuilder: (context, index) {
+            final section = widget.sections[index];
+            final isActive = index == _activeSection;
+      
+            return GestureDetector(
+              onTap: () => _scrollToSection(index),
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                alignment: Alignment.center,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      section.icon,
+                      size: 20,
                       color: isActive
                           ? const Color(0xFF4F46E5)
                           : (isDark
                                 ? const Color(0xFF9CA3AF)
                                 : const Color(0xFF6B7280)),
                     ),
-                  ),
-                  if (isActive) ...[
-                    const SizedBox(height: 2),
-                    Container(
-                      width: 20,
-                      height: 2,
-                      decoration: const BoxDecoration(
-                        color: Color(0xFF4F46E5),
-                        borderRadius: BorderRadius.all(Radius.circular(1)),
+                    const SizedBox(height: 4),
+                    Text(
+                      section.label,
+                      style: TextStyle(
+                        fontSize: 11,
+                        fontWeight: isActive ? FontWeight.w600 : FontWeight.w400,
+                        color: isActive
+                            ? const Color(0xFF4F46E5)
+                            : (isDark
+                                  ? const Color(0xFF9CA3AF)
+                                  : const Color(0xFF6B7280)),
                       ),
                     ),
+                    if (isActive) ...[
+                      const SizedBox(height: 2),
+                      Container(
+                        width: 20,
+                        height: 2,
+                        decoration: const BoxDecoration(
+                          color: Color(0xFF4F46E5),
+                          borderRadius: BorderRadius.all(Radius.circular(1)),
+                        ),
+                      ),
+                    ],
                   ],
-                ],
+                ),
               ),
-            ),
-          );
-        },
+            );
+          },
+        ),
       ),
     );
   }

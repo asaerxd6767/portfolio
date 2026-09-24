@@ -14,7 +14,7 @@ class StatsSection extends StatelessWidget {
     return FadeInOnScroll(
       child: Padding(
         padding: EdgeInsets.symmetric(
-          horizontal: isMobile ? 20 : 32,
+          horizontal: isMobile ? 9 : 32,
           vertical: 16,
         ),
         child: isMobile ? _buildMobileGrid(context) : _buildDesktopRow(context),
@@ -64,7 +64,6 @@ class StatsSection extends StatelessWidget {
       crossAxisCount: 2,
       mainAxisSpacing: 12,
       crossAxisSpacing: 12,
-      childAspectRatio: 1.4,
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       children: const [

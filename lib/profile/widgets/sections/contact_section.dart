@@ -45,12 +45,16 @@ class ContactSection extends StatelessWidget {
                         _buildContactButtons(context, true),
                       ],
                     )
-                  : Row(
-                      children: [
-                        Expanded(child: _buildContactContent(theme, false)),
-                        _buildContactButtons(context, false),
-                      ],
-                    ),
+                  : SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    physics: const NeverScrollableScrollPhysics(),
+                    child: Row(
+                        children: [
+                          Expanded(child: _buildContactContent(theme, false)),
+                          _buildContactButtons(context, false),
+                        ],
+                      ),
+                  ),
             ),
             const SizedBox(height: 32),
             _buildFooter(context),
@@ -170,50 +174,53 @@ class ContactSection extends StatelessWidget {
           color: isDark ? AppColors.borderDark : AppColors.borderLight,
         ),
       ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Asser Mohammed',
-                style: theme.textTheme.titleSmall?.copyWith(
-                  fontWeight: FontWeight.w700,
-                  color: isDark
-                      ? AppColors.textPrimaryDark
-                      : AppColors.textPrimaryLight,
+      child: SingleChildScrollView(
+        scrollDirection: .horizontal,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Asser Mohammed',
+                  style: theme.textTheme.titleSmall?.copyWith(
+                    fontWeight: FontWeight.w700,
+                    color: isDark
+                        ? AppColors.textPrimaryDark
+                        : AppColors.textPrimaryLight,
+                  ),
                 ),
-              ),
-              Text(
-                'Flutter Developer & CS Student',
-                style: theme.textTheme.bodySmall?.copyWith(
-                  color: isDark
-                      ? AppColors.textSecondaryDark
-                      : AppColors.textSecondaryLight,
+                Text(
+                  'Flutter Developer & CS Student',
+                  style: theme.textTheme.bodySmall?.copyWith(
+                    color: isDark
+                        ? AppColors.textSecondaryDark
+                        : AppColors.textSecondaryLight,
+                  ),
                 ),
-              ),
-            ],
-          ),
-          Row(
-            children: [
-              _FooterLink(
-                url: 'https://github.com/asaerxd6767',
-                icon: Icons.code,
-              ),
-              const SizedBox(width: 12),
-              _FooterLink(
-                url: 'https://linkedin.com/in/asser-mohammed',
-                icon: Icons.work,
-              ),
-              const SizedBox(width: 12),
-              _FooterLink(
-                url: 'https://codeforces.com/profile/asser_mohammed',
-                icon: Icons.sports,
-              ),
-            ],
-          ),
-        ],
+              ],
+            ),
+            Row(
+              children: [
+                _FooterLink(
+                  url: 'https://github.com/asaerxd6767',
+                  icon: Icons.code,
+                ),
+                const SizedBox(width: 12),
+                _FooterLink(
+                  url: 'https://linkedin.com/in/asser-mohammed',
+                  icon: Icons.work,
+                ),
+                const SizedBox(width: 12),
+                _FooterLink(
+                  url: 'https://codeforces.com/profile/asser_mohammed',
+                  icon: Icons.sports,
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
