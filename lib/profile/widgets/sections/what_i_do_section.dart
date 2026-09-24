@@ -14,13 +14,16 @@ class WhatIDoSection extends StatelessWidget {
     return FadeInOnScroll(
       child: Padding(
         padding: EdgeInsets.symmetric(
-          horizontal: isMobile ? 20 : 48,
+          horizontal: isMobile ? 20 : 32,
           vertical: 16,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _SectionHeader(title: 'What I Do', subtitle: 'My core areas of expertise'),
+            _SectionHeader(
+              title: 'What I Do',
+              subtitle: 'My core areas of expertise',
+            ),
             const SizedBox(height: 24),
             isMobile
                 ? Column(
@@ -28,21 +31,29 @@ class WhatIDoSection extends StatelessWidget {
                       _ServiceCard(
                         icon: Icons.phone_iphone,
                         title: 'Mobile Development',
-                        description: 'Crafting beautiful, performant mobile applications with Flutter and Dart. From pixel-perfect UIs to robust backend integrations.',
+                        description:
+                            'Crafting beautiful, performant mobile applications with Flutter and Dart. From pixel-perfect UIs to robust backend integrations.',
                         tags: ['Flutter', 'Dart', 'Firebase', 'REST APIs'],
                       ),
                       const SizedBox(height: 16),
                       _ServiceCard(
                         icon: Icons.psychology,
                         title: 'Problem Solving',
-                        description: 'Competitive programmer with 650+ problems solved. Strong foundations in algorithms, data structures, and computational thinking.',
-                        tags: ['C++', 'Python', 'Algorithms', 'Data Structures'],
+                        description:
+                            'Competitive programmer with 650+ problems solved. Strong foundations in algorithms, data structures, and computational thinking.',
+                        tags: [
+                          'C++',
+                          'Python',
+                          'Algorithms',
+                          'Data Structures',
+                        ],
                       ),
                       const SizedBox(height: 16),
                       _ServiceCard(
                         icon: Icons.groups,
                         title: 'Teaching & Leadership',
-                        description: 'Mentoring students in programming, leading technical communities, and bridging the gap between theory and practice.',
+                        description:
+                            'Mentoring students in programming, leading technical communities, and bridging the gap between theory and practice.',
                         tags: ['ICPC Mentor', 'Batch Leader', 'ICPC'],
                       ),
                     ],
@@ -54,7 +65,8 @@ class WhatIDoSection extends StatelessWidget {
                         child: _ServiceCard(
                           icon: Icons.phone_iphone,
                           title: 'Mobile Development',
-                          description: 'Crafting beautiful, performant mobile applications with Flutter and Dart. From pixel-perfect UIs to robust backend integrations.',
+                          description:
+                              'Crafting beautiful, performant mobile applications with Flutter and Dart. From pixel-perfect UIs to robust backend integrations.',
                           tags: ['Flutter', 'Dart', 'Firebase', 'REST APIs'],
                         ),
                       ),
@@ -63,8 +75,14 @@ class WhatIDoSection extends StatelessWidget {
                         child: _ServiceCard(
                           icon: Icons.psychology,
                           title: 'Problem Solving',
-                          description: 'Competitive programmer with 650+ problems solved. Strong foundations in algorithms, data structures, and computational thinking.',
-                          tags: ['C++', 'Python', 'Algorithms', 'Data Structures'],
+                          description:
+                              'Competitive programmer with 650+ problems solved. Strong foundations in algorithms, data structures, and computational thinking.',
+                          tags: [
+                            'C++',
+                            'Python',
+                            'Algorithms',
+                            'Data Structures',
+                          ],
                         ),
                       ),
                       const SizedBox(width: 16),
@@ -72,7 +90,8 @@ class WhatIDoSection extends StatelessWidget {
                         child: _ServiceCard(
                           icon: Icons.groups,
                           title: 'Teaching & Leadership',
-                          description: 'Mentoring students in programming, leading technical communities, and bridging the gap between theory and practice.',
+                          description:
+                              'Mentoring students in programming, leading technical communities, and bridging the gap between theory and practice.',
                           tags: ['ICPC Mentor', 'Batch Leader', 'ICPC'],
                         ),
                       ),
@@ -103,14 +122,18 @@ class _SectionHeader extends StatelessWidget {
           title,
           style: theme.textTheme.displaySmall?.copyWith(
             fontWeight: FontWeight.w800,
-            color: isDark ? AppColors.textPrimaryDark : AppColors.textPrimaryLight,
+            color: isDark
+                ? AppColors.textPrimaryDark
+                : AppColors.textPrimaryLight,
           ),
         ),
         const SizedBox(height: 4),
         Text(
           subtitle,
           style: theme.textTheme.bodyMedium?.copyWith(
-            color: isDark ? AppColors.textSecondaryDark : AppColors.textSecondaryLight,
+            color: isDark
+                ? AppColors.textSecondaryDark
+                : AppColors.textSecondaryLight,
           ),
         ),
       ],
@@ -187,14 +210,18 @@ class _ServiceCardState extends State<_ServiceCard> {
               widget.title,
               style: theme.textTheme.titleMedium?.copyWith(
                 fontWeight: FontWeight.w700,
-                color: isDark ? AppColors.textPrimaryDark : AppColors.textPrimaryLight,
+                color: isDark
+                    ? AppColors.textPrimaryDark
+                    : AppColors.textPrimaryLight,
               ),
             ),
             const SizedBox(height: 8),
             Text(
               widget.description,
               style: theme.textTheme.bodyMedium?.copyWith(
-                color: isDark ? AppColors.textSecondaryDark : AppColors.textSecondaryLight,
+                color: isDark
+                    ? AppColors.textSecondaryDark
+                    : AppColors.textSecondaryLight,
                 height: 1.6,
               ),
             ),
@@ -204,9 +231,14 @@ class _ServiceCardState extends State<_ServiceCard> {
               runSpacing: 6,
               children: widget.tags.map((tag) {
                 return Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 10,
+                    vertical: 4,
+                  ),
                   decoration: BoxDecoration(
-                    color: AppColors.accent.withValues(alpha: isDark ? 0.15 : 0.08),
+                    color: AppColors.accent.withValues(
+                      alpha: isDark ? 0.15 : 0.08,
+                    ),
                     borderRadius: BorderRadius.circular(6),
                   ),
                   child: Text(

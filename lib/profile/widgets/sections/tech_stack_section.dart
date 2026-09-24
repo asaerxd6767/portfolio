@@ -14,7 +14,7 @@ class TechStackSection extends StatelessWidget {
     return FadeInOnScroll(
       child: Padding(
         padding: EdgeInsets.symmetric(
-          horizontal: isMobile ? 20 : 48,
+          horizontal: isMobile ? 20 : 32,
           vertical: 16,
         ),
         child: Column(
@@ -28,6 +28,8 @@ class TechStackSection extends StatelessWidget {
             _buildCategories(context, isMobile),
             const SizedBox(height: 24),
             _buildEducationCard(context),
+            const SizedBox(height: 16),
+            _buildCertCard(context),
           ],
         ),
       ),
@@ -114,7 +116,11 @@ class TechStackSection extends StatelessWidget {
               color: AppColors.accent.withValues(alpha: isDark ? 0.2 : 0.1),
               borderRadius: BorderRadius.circular(12),
             ),
-            child: const Icon(Icons.school_outlined, color: AppColors.accent, size: 24),
+            child: const Icon(
+              Icons.school_outlined,
+              color: AppColors.accent,
+              size: 24,
+            ),
           ),
           const SizedBox(width: 16),
           Expanded(
@@ -125,7 +131,9 @@ class TechStackSection extends StatelessWidget {
                   'B.Sc. Computer Science & AI',
                   style: theme.textTheme.titleMedium?.copyWith(
                     fontWeight: FontWeight.w700,
-                    color: isDark ? AppColors.textPrimaryDark : AppColors.textPrimaryLight,
+                    color: isDark
+                        ? AppColors.textPrimaryDark
+                        : AppColors.textPrimaryLight,
                   ),
                 ),
                 Text(
@@ -138,10 +146,82 @@ class TechStackSection extends StatelessWidget {
                 Text(
                   'Data Structures, Algorithms, OOP, AI, Machine Learning, Database Systems, Software Engineering',
                   style: theme.textTheme.bodySmall?.copyWith(
-                    color: isDark ? AppColors.textSecondaryDark : AppColors.textSecondaryLight,
+                    color: isDark
+                        ? AppColors.textSecondaryDark
+                        : AppColors.textSecondaryLight,
                   ),
                 ),
               ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildCertCard(BuildContext context) {
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
+
+    return Container(
+      padding: const EdgeInsets.all(24),
+      decoration: BoxDecoration(
+        color: isDark ? AppColors.cardDark : AppColors.cardLight,
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(
+          color: isDark ? AppColors.borderDark : AppColors.borderLight,
+        ),
+      ),
+      child: Row(
+        children: [
+          Container(
+            width: 48,
+            height: 48,
+            decoration: BoxDecoration(
+              color: const Color(
+                0xFFCE0E2D,
+              ).withValues(alpha: isDark ? 0.2 : 0.1),
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: const Icon(
+              Icons.verified,
+              color: Color(0xFFCE0E2D),
+              size: 24,
+            ),
+          ),
+          const SizedBox(width: 16),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Huawei ICT Academy — Overview of AI',
+                  style: theme.textTheme.titleMedium?.copyWith(
+                    fontWeight: FontWeight.w700,
+                    color: isDark
+                        ? AppColors.textPrimaryDark
+                        : AppColors.textPrimaryLight,
+                  ),
+                ),
+                Text(
+                  'Certified · Sep 2026',
+                  style: theme.textTheme.bodyMedium?.copyWith(
+                    color: const Color(0xFFCE0E2D),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(8),
+            child: Image.asset(
+              'assets/images/huawei_ai_cert.png',
+              height: 48,
+              width: 48,
+              fit: BoxFit.cover,
+              errorBuilder: (context, error, stackTrace) {
+                return const SizedBox.shrink();
+              },
             ),
           ),
         ],
@@ -168,14 +248,18 @@ class _SectionHeader extends StatelessWidget {
           title,
           style: theme.textTheme.displaySmall?.copyWith(
             fontWeight: FontWeight.w800,
-            color: isDark ? AppColors.textPrimaryDark : AppColors.textPrimaryLight,
+            color: isDark
+                ? AppColors.textPrimaryDark
+                : AppColors.textPrimaryLight,
           ),
         ),
         const SizedBox(height: 4),
         Text(
           subtitle,
           style: theme.textTheme.bodyMedium?.copyWith(
-            color: isDark ? AppColors.textSecondaryDark : AppColors.textSecondaryLight,
+            color: isDark
+                ? AppColors.textSecondaryDark
+                : AppColors.textSecondaryLight,
           ),
         ),
       ],
@@ -207,17 +291,15 @@ class _TechCategoryCard extends StatelessWidget {
         children: [
           Row(
             children: [
-              Icon(
-                category.icon,
-                size: 20,
-                color: AppColors.accent,
-              ),
+              Icon(category.icon, size: 20, color: AppColors.accent),
               const SizedBox(width: 8),
               Text(
                 category.title,
                 style: theme.textTheme.titleSmall?.copyWith(
                   fontWeight: FontWeight.w700,
-                  color: isDark ? AppColors.textPrimaryDark : AppColors.textPrimaryLight,
+                  color: isDark
+                      ? AppColors.textPrimaryDark
+                      : AppColors.textPrimaryLight,
                 ),
               ),
             ],
@@ -231,13 +313,17 @@ class _TechCategoryCard extends StatelessWidget {
                   Icon(
                     item.icon,
                     size: 16,
-                    color: isDark ? AppColors.textSecondaryDark : AppColors.textSecondaryLight,
+                    color: isDark
+                        ? AppColors.textSecondaryDark
+                        : AppColors.textSecondaryLight,
                   ),
                   const SizedBox(width: 8),
                   Text(
                     item.name,
                     style: theme.textTheme.bodyMedium?.copyWith(
-                      color: isDark ? AppColors.textSecondaryDark : AppColors.textSecondaryLight,
+                      color: isDark
+                          ? AppColors.textSecondaryDark
+                          : AppColors.textSecondaryLight,
                     ),
                   ),
                 ],

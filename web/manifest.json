@@ -1,12 +1,12 @@
 {
-    "name": "portfolio",
-    "short_name": "portfolio",
+    "name": "Asser Mohammed — Flutter Developer Portfolio",
+    "short_name": "Asser Mohammed",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
-    "orientation": "portrait-primary",
+    "background_color": "#F9FAFB",
+    "theme_color": "#4F46E5",
+    "description": "Asser Mohammed — Flutter Developer, Competitive Programmer, CS & AI Student at Minia National University.",
+    "orientation": "any",
     "prefer_related_applications": false,
     "icons": [
         {

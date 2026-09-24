@@ -7,6 +7,7 @@ class Breakpoints {
   static const double tablet = 1024;
   static const double desktop = 1440;
   static const double sidebarWidth = 300;
+  static const double maxContentWidth = 1440;
 
   static bool isMobile(BuildContext context) =>
       MediaQuery.sizeOf(context).width < mobile;

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class AppColors {
   AppColors._();
@@ -29,7 +28,6 @@ class AppTheme {
   AppTheme._();
 
   static ThemeData light() {
-    final textTheme = _buildTextTheme(Brightness.light);
     return ThemeData(
       useMaterial3: true,
       brightness: Brightness.light,
@@ -43,7 +41,7 @@ class AppTheme {
         onSurface: AppColors.textPrimaryLight,
         outline: AppColors.borderLight,
       ),
-      textTheme: textTheme,
+      iconTheme: const IconThemeData(color: AppColors.textPrimaryLight),
       cardTheme: CardThemeData(
         color: AppColors.cardLight,
         elevation: 0,
@@ -61,7 +59,6 @@ class AppTheme {
   }
 
   static ThemeData dark() {
-    final textTheme = _buildTextTheme(Brightness.dark);
     return ThemeData(
       useMaterial3: true,
       brightness: Brightness.dark,
@@ -75,7 +72,7 @@ class AppTheme {
         onSurface: AppColors.textPrimaryDark,
         outline: AppColors.borderDark,
       ),
-      textTheme: textTheme,
+      iconTheme: const IconThemeData(color: AppColors.textPrimaryDark),
       cardTheme: CardThemeData(
         color: AppColors.cardDark,
         elevation: 0,
@@ -89,41 +86,6 @@ class AppTheme {
         thickness: 1,
         space: 1,
       ),
-    );
-  }
-
-  static TextTheme _buildTextTheme(Brightness brightness) {
-    final bodyFont = GoogleFonts.inter();
-    final headingFont = GoogleFonts.inter();
-
-    final base = TextTheme(
-      displayLarge: headingFont.copyWith(fontSize: 48, fontWeight: FontWeight.w800, letterSpacing: -1.5),
-      displayMedium: headingFont.copyWith(fontSize: 36, fontWeight: FontWeight.w700, letterSpacing: -1),
-      displaySmall: headingFont.copyWith(fontSize: 30, fontWeight: FontWeight.w700, letterSpacing: -0.5),
-      headlineMedium: headingFont.copyWith(fontSize: 24, fontWeight: FontWeight.w600),
-      headlineSmall: headingFont.copyWith(fontSize: 20, fontWeight: FontWeight.w600),
-      titleLarge: headingFont.copyWith(fontSize: 18, fontWeight: FontWeight.w600),
-      titleMedium: headingFont.copyWith(fontSize: 16, fontWeight: FontWeight.w600),
-      titleSmall: headingFont.copyWith(fontSize: 14, fontWeight: FontWeight.w600),
-      bodyLarge: bodyFont.copyWith(fontSize: 16, fontWeight: FontWeight.w400, height: 1.6),
-      bodyMedium: bodyFont.copyWith(fontSize: 14, fontWeight: FontWeight.w400, height: 1.5),
-      bodySmall: bodyFont.copyWith(fontSize: 12, fontWeight: FontWeight.w400, height: 1.4),
-      labelLarge: bodyFont.copyWith(fontSize: 14, fontWeight: FontWeight.w500),
-      labelMedium: bodyFont.copyWith(fontSize: 12, fontWeight: FontWeight.w500),
-      labelSmall: bodyFont.copyWith(fontSize: 11, fontWeight: FontWeight.w500),
-    );
-
-    if (brightness == Brightness.dark) {
-      return base.copyWith(
-        bodyLarge: base.bodyLarge?.copyWith(color: AppColors.textPrimaryDark),
-        bodyMedium: base.bodyMedium?.copyWith(color: AppColors.textSecondaryDark),
-        bodySmall: base.bodySmall?.copyWith(color: AppColors.textSecondaryDark),
-      );
-    }
-    return base.copyWith(
-      bodyLarge: base.bodyLarge?.copyWith(color: AppColors.textPrimaryLight),
-      bodyMedium: base.bodyMedium?.copyWith(color: AppColors.textSecondaryLight),
-      bodySmall: base.bodySmall?.copyWith(color: AppColors.textSecondaryLight),
     );
   }
 }

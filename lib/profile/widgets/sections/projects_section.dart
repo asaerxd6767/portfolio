@@ -15,7 +15,7 @@ class ProjectsSection extends StatelessWidget {
     return FadeInOnScroll(
       child: Padding(
         padding: EdgeInsets.symmetric(
-          horizontal: isMobile ? 20 : 48,
+          horizontal: isMobile ? 20 : 32,
           vertical: 16,
         ),
         child: Column(
@@ -42,8 +42,37 @@ class ProjectsSection extends StatelessWidget {
               subtitle: 'Healthcare Management App',
               description:
                   'Full-featured clinic management app with real backend API integration, doctor/patient dashboards, appointment scheduling, and authentication with server tokens.',
-              tags: ['Flutter', 'Clean Architecture', 'API Integration', 'Team Lead'],
+              tags: [
+                'Flutter',
+                'Clean Architecture',
+                'API Integration',
+                'Team Lead',
+              ],
+              image: 'assets/images/Tech_Mastery_Internship.jpg',
+              githubUrl:
+                  'https://github.com/techmasterycompany-star/LeoClinic_flutter',
               accentColor: const Color(0xFF06B6D4),
+            ),
+            const SizedBox(height: 20),
+            _ProjectCard(
+              title: 'AI Colorectal Cancer Assistant',
+              subtitle: 'RAG Pipeline',
+              description:
+                  'RAG pipeline for NICE clinical guidelines with structure-aware chunking, multilingual-e5-base embeddings, and a bilingual chat interface with private analysis dashboard.',
+              tags: ['Python', 'Next.js', 'Chroma', 'NLP'],
+              image: 'assets/images/Ai_Hackathon(RAG).jpg',
+              liveUrl: 'https://ai-project-for-hackathon.vercel.app/',
+              accentColor: const Color(0xFFEF4444),
+            ),
+            const SizedBox(height: 20),
+            _ProjectCard(
+              title: 'Nafi3',
+              subtitle: 'Smart Donation Platform',
+              description:
+                  'Connects donors with verified charities through transparent tracking. Smart matching based on location, urgency, and category. Built at Tech Mastery hackathon.',
+              tags: ['System Design', 'Web Dev', 'Hackathon'],
+              image: 'assets/images/Tech_Mastery_Hackathon(Nafi3).jpg',
+              accentColor: const Color(0xFFEC4899),
             ),
             const SizedBox(height: 20),
             _ProjectCard(
@@ -92,14 +121,18 @@ class _SectionHeader extends StatelessWidget {
           title,
           style: theme.textTheme.displaySmall?.copyWith(
             fontWeight: FontWeight.w800,
-            color: isDark ? AppColors.textPrimaryDark : AppColors.textPrimaryLight,
+            color: isDark
+                ? AppColors.textPrimaryDark
+                : AppColors.textPrimaryLight,
           ),
         ),
         const SizedBox(height: 4),
         Text(
           subtitle,
           style: theme.textTheme.bodyMedium?.copyWith(
-            color: isDark ? AppColors.textSecondaryDark : AppColors.textSecondaryLight,
+            color: isDark
+                ? AppColors.textSecondaryDark
+                : AppColors.textSecondaryLight,
           ),
         ),
       ],
@@ -168,7 +201,9 @@ class _ProjectCardState extends State<_ProjectCard> {
               : null,
         ),
         clipBehavior: Clip.antiAlias,
-        child: isMobile ? _buildMobileLayout(theme, isDark) : _buildDesktopLayout(theme, isDark),
+        child: isMobile
+            ? _buildMobileLayout(theme, isDark)
+            : _buildDesktopLayout(theme, isDark),
       ),
     );
   }
@@ -177,15 +212,9 @@ class _ProjectCardState extends State<_ProjectCard> {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Expanded(
-          flex: 3,
-          child: _buildContent(theme, isDark),
-        ),
+        Expanded(flex: 3, child: _buildContent(theme, isDark)),
         if (widget.image != null)
-          Expanded(
-            flex: 4,
-            child: _buildImagePreview(isDark),
-          ),
+          Expanded(flex: 4, child: _buildImagePreview(isDark)),
       ],
     );
   }
@@ -225,7 +254,9 @@ class _ProjectCardState extends State<_ProjectCard> {
                       widget.title,
                       style: theme.textTheme.headlineSmall?.copyWith(
                         fontWeight: FontWeight.w700,
-                        color: isDark ? AppColors.textPrimaryDark : AppColors.textPrimaryLight,
+                        color: isDark
+                            ? AppColors.textPrimaryDark
+                            : AppColors.textPrimaryLight,
                       ),
                     ),
                     Text(
@@ -244,7 +275,9 @@ class _ProjectCardState extends State<_ProjectCard> {
           Text(
             widget.description,
             style: theme.textTheme.bodyMedium?.copyWith(
-              color: isDark ? AppColors.textSecondaryDark : AppColors.textSecondaryLight,
+              color: isDark
+                  ? AppColors.textSecondaryDark
+                  : AppColors.textSecondaryLight,
               height: 1.6,
             ),
           ),
@@ -254,9 +287,14 @@ class _ProjectCardState extends State<_ProjectCard> {
             runSpacing: 6,
             children: widget.tags.map((tag) {
               return Container(
-                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 10,
+                  vertical: 4,
+                ),
                 decoration: BoxDecoration(
-                  color: widget.accentColor.withValues(alpha: isDark ? 0.15 : 0.08),
+                  color: widget.accentColor.withValues(
+                    alpha: isDark ? 0.15 : 0.08,
+                  ),
                   borderRadius: BorderRadius.circular(6),
                 ),
                 child: Text(
@@ -296,31 +334,32 @@ class _ProjectCardState extends State<_ProjectCard> {
 
   Widget _buildImagePreview(bool isDark) {
     return Container(
-      height: 320,
+      width: double.infinity,
+      height: 260,
       margin: const EdgeInsets.all(12),
+      padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
         color: isDark ? const Color(0xFF111827) : const Color(0xFFF3F4F6),
       ),
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(12),
-        child: Stack(
-          fit: StackFit.expand,
-          children: [
-            Image.asset(
-              widget.image!,
-              fit: BoxFit.cover,
-              errorBuilder: (context, error, stackTrace) {
-                return Center(
-                  child: Icon(
-                    Icons.image_outlined,
-                    size: 48,
-                    color: isDark ? AppColors.textSecondaryDark : AppColors.textSecondaryLight,
-                  ),
-                );
-              },
-            ),
-          ],
+        borderRadius: BorderRadius.circular(8),
+        child: Image.asset(
+          widget.image!,
+          fit: BoxFit.contain,
+          errorBuilder: (context, error, stackTrace) {
+            return SizedBox.expand(
+              child: Center(
+                child: Icon(
+                  Icons.image_outlined,
+                  size: 48,
+                  color: isDark
+                      ? AppColors.textSecondaryDark
+                      : AppColors.textSecondaryLight,
+                ),
+              ),
+            );
+          },
         ),
       ),
     );

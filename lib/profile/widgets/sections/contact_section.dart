@@ -16,7 +16,7 @@ class ContactSection extends StatelessWidget {
     return FadeInOnScroll(
       child: Padding(
         padding: EdgeInsets.symmetric(
-          horizontal: isMobile ? 20 : 48,
+          horizontal: isMobile ? 20 : 32,
           vertical: 16,
         ),
         child: Column(
@@ -33,10 +33,7 @@ class ContactSection extends StatelessWidget {
                 gradient: LinearGradient(
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
-                  colors: [
-                    AppColors.accent,
-                    AppColors.accentDark,
-                  ],
+                  colors: [AppColors.accent, AppColors.accentDark],
                 ),
                 borderRadius: BorderRadius.circular(20),
               ),
@@ -65,7 +62,9 @@ class ContactSection extends StatelessWidget {
 
   Widget _buildContactContent(ThemeData theme, bool isMobile) {
     return Column(
-      crossAxisAlignment: isMobile ? CrossAxisAlignment.center : CrossAxisAlignment.start,
+      crossAxisAlignment: isMobile
+          ? CrossAxisAlignment.center
+          : CrossAxisAlignment.start,
       children: [
         const Text(
           'Get In Touch',
@@ -102,7 +101,8 @@ class ContactSection extends StatelessWidget {
       _ContactAction(
         icon: Icons.work,
         label: 'LinkedIn',
-        onTap: () => launchUrl(Uri.parse('https://linkedin.com/in/asser-mohammed')),
+        onTap: () =>
+            launchUrl(Uri.parse('https://linkedin.com/in/asser-mohammed')),
       ),
     ];
 
@@ -111,10 +111,7 @@ class ContactSection extends StatelessWidget {
         children: buttons.map((btn) {
           return Padding(
             padding: const EdgeInsets.only(bottom: 8),
-            child: SizedBox(
-              width: double.infinity,
-              child: _buildButton(btn),
-            ),
+            child: SizedBox(width: double.infinity, child: _buildButton(btn)),
           );
         }).toList(),
       );
@@ -183,13 +180,17 @@ class ContactSection extends StatelessWidget {
                 'Asser Mohammed',
                 style: theme.textTheme.titleSmall?.copyWith(
                   fontWeight: FontWeight.w700,
-                  color: isDark ? AppColors.textPrimaryDark : AppColors.textPrimaryLight,
+                  color: isDark
+                      ? AppColors.textPrimaryDark
+                      : AppColors.textPrimaryLight,
                 ),
               ),
               Text(
                 'Flutter Developer & CS Student',
                 style: theme.textTheme.bodySmall?.copyWith(
-                  color: isDark ? AppColors.textSecondaryDark : AppColors.textSecondaryLight,
+                  color: isDark
+                      ? AppColors.textSecondaryDark
+                      : AppColors.textSecondaryLight,
                 ),
               ),
             ],
@@ -236,14 +237,18 @@ class _SectionHeader extends StatelessWidget {
           title,
           style: theme.textTheme.displaySmall?.copyWith(
             fontWeight: FontWeight.w800,
-            color: isDark ? AppColors.textPrimaryDark : AppColors.textPrimaryLight,
+            color: isDark
+                ? AppColors.textPrimaryDark
+                : AppColors.textPrimaryLight,
           ),
         ),
         const SizedBox(height: 4),
         Text(
           subtitle,
           style: theme.textTheme.bodyMedium?.copyWith(
-            color: isDark ? AppColors.textSecondaryDark : AppColors.textSecondaryLight,
+            color: isDark
+                ? AppColors.textSecondaryDark
+                : AppColors.textSecondaryLight,
           ),
         ),
       ],
@@ -285,7 +290,9 @@ class _FooterLink extends StatelessWidget {
           child: Icon(
             icon,
             size: 16,
-            color: isDark ? AppColors.textSecondaryDark : AppColors.textSecondaryLight,
+            color: isDark
+                ? AppColors.textSecondaryDark
+                : AppColors.textSecondaryLight,
           ),
         ),
       ),

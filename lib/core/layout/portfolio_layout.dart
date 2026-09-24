@@ -1,8 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/gestures.dart';
 
 import '../../core/responsive/responsive_builder.dart';
 import '../../core/layout/sidebar.dart';
-import 'package:flutter/gestures.dart';
+
+class PortfolioNavScope extends InheritedWidget {
+  const PortfolioNavScope({
+    super.key,
+    required this.scrollToLabel,
+    required super.child,
+  });
+
+  final void Function(String label) scrollToLabel;
+
+  static PortfolioNavScope? of(BuildContext context) =>
+      context.dependOnInheritedWidgetOfExactType<PortfolioNavScope>();
+
+  @override
+  bool updateShouldNotify(PortfolioNavScope oldWidget) =>
+      scrollToLabel != oldWidget.scrollToLabel;
+}
 
 class PortfolioLayout extends StatefulWidget {
   const PortfolioLayout({
@@ -73,6 +90,11 @@ class _PortfolioLayoutState extends State<PortfolioLayout> {
     setState(() => _activeSection = index);
   }
 
+  void _scrollToLabel(String label) {
+    final index = widget.sections.indexWhere((s) => s.label == label);
+    if (index >= 0) _scrollToSection(index);
+  }
+
   @override
   Widget build(BuildContext context) {
     return ResponsiveBuilder(
@@ -90,9 +112,7 @@ class _PortfolioLayoutState extends State<PortfolioLayout> {
           activeSection: _activeSection,
           onSectionTap: _scrollToSection,
         ),
-        Expanded(
-          child: _buildContent(),
-        ),
+        Expanded(child: _buildContent()),
       ],
     );
   }
@@ -101,9 +121,7 @@ class _PortfolioLayoutState extends State<PortfolioLayout> {
     return Column(
       children: [
         _buildMobileNav(),
-        Expanded(
-          child: _buildContent(),
-        ),
+        Expanded(child: _buildContent()),
       ],
     );
   }
@@ -112,9 +130,7 @@ class _PortfolioLayoutState extends State<PortfolioLayout> {
     return Column(
       children: [
         _buildMobileNav(),
-        Expanded(
-          child: _buildContent(),
-        ),
+        Expanded(child: _buildContent()),
       ],
     );
   }
@@ -153,7 +169,9 @@ class _PortfolioLayoutState extends State<PortfolioLayout> {
                     size: 20,
                     color: isActive
                         ? const Color(0xFF4F46E5)
-                        : (isDark ? const Color(0xFF9CA3AF) : const Color(0xFF6B7280)),
+                        : (isDark
+                              ? const Color(0xFF9CA3AF)
+                              : const Color(0xFF6B7280)),
                   ),
                   const SizedBox(height: 4),
                   Text(
@@ -163,7 +181,9 @@ class _PortfolioLayoutState extends State<PortfolioLayout> {
                       fontWeight: isActive ? FontWeight.w600 : FontWeight.w400,
                       color: isActive
                           ? const Color(0xFF4F46E5)
-                          : (isDark ? const Color(0xFF9CA3AF) : const Color(0xFF6B7280)),
+                          : (isDark
+                                ? const Color(0xFF9CA3AF)
+                                : const Color(0xFF6B7280)),
                     ),
                   ),
                   if (isActive) ...[
@@ -191,24 +211,36 @@ class _PortfolioLayoutState extends State<PortfolioLayout> {
 
     return Container(
       color: isDark ? const Color(0xFF030712) : const Color(0xFFF9FAFB),
-      child: ScrollConfiguration(
-        behavior: ScrollConfiguration.of(context).copyWith(
-          dragDevices: {
-            PointerDeviceKind.mouse,
-            PointerDeviceKind.touch,
-            PointerDeviceKind.trackpad,
-          },
-        ),
-        child: ListView.builder(
-          controller: _scrollController,
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 32),
-          itemCount: widget.sectionBuilders.length,
-          itemBuilder: (context, index) {
-            return Container(
-              key: _sectionKeys[index],
-              child: widget.sectionBuilders[index](context, index),
-            );
-          },
+      child: PortfolioNavScope(
+        scrollToLabel: _scrollToLabel,
+        child: ScrollConfiguration(
+          behavior: ScrollConfiguration.of(context).copyWith(
+            dragDevices: {
+              PointerDeviceKind.mouse,
+              PointerDeviceKind.touch,
+              PointerDeviceKind.trackpad,
+            },
+          ),
+          child: ListView.builder(
+            controller: _scrollController,
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
+            itemCount: widget.sectionBuilders.length,
+            itemBuilder: (context, index) {
+              return Center(
+                child: ConstrainedBox(
+                  constraints:
+                      const BoxConstraints(maxWidth: Breakpoints.maxContentWidth),
+                  child: SizedBox(
+                    width: double.infinity,
+                    child: Container(
+                      key: _sectionKeys[index],
+                      child: widget.sectionBuilders[index](context, index),
+                    ),
+                  ),
+                ),
+              );
+            },
+          ),
         ),
       ),
     );

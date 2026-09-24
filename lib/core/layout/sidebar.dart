@@ -57,10 +57,7 @@ class Sidebar extends StatelessWidget {
           height: 96,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            border: Border.all(
-              color: AppColors.accent,
-              width: 3,
-            ),
+            border: Border.all(color: AppColors.accent, width: 3),
             boxShadow: [
               BoxShadow(
                 color: AppColors.accent.withValues(alpha: 0.3),
@@ -78,17 +75,16 @@ class Sidebar extends StatelessWidget {
         const SizedBox(height: 16),
         const Text(
           'Asser Mohammed',
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.w700,
-          ),
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
         ),
         const SizedBox(height: 4),
         Text(
           'Flutter Developer',
           style: TextStyle(
             fontSize: 14,
-            color: isDark ? AppColors.textSecondaryDark : AppColors.textSecondaryLight,
+            color: isDark
+                ? AppColors.textSecondaryDark
+                : AppColors.textSecondaryLight,
           ),
         ),
       ],
@@ -111,7 +107,10 @@ class Sidebar extends StatelessWidget {
               onTap: () => onSectionTap(index),
               child: AnimatedContainer(
                 duration: const Duration(milliseconds: 200),
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 12,
+                ),
                 decoration: BoxDecoration(
                   color: isActive
                       ? AppColors.accent.withValues(alpha: isDark ? 0.2 : 0.1)
@@ -126,8 +125,8 @@ class Sidebar extends StatelessWidget {
                       color: isActive
                           ? AppColors.accent
                           : (isDark
-                              ? AppColors.textSecondaryDark
-                              : AppColors.textSecondaryLight),
+                                ? AppColors.textSecondaryDark
+                                : AppColors.textSecondaryLight),
                     ),
                     const SizedBox(width: 12),
                     Expanded(
@@ -135,12 +134,16 @@ class Sidebar extends StatelessWidget {
                         section.label,
                         style: TextStyle(
                           fontSize: 14,
-                          fontWeight: isActive ? FontWeight.w600 : FontWeight.w400,
+                          fontWeight: isActive
+                              ? FontWeight.w600
+                              : FontWeight.w400,
                           color: isActive
-                              ? (isDark ? AppColors.textPrimaryDark : AppColors.textPrimaryLight)
+                              ? (isDark
+                                    ? AppColors.textPrimaryDark
+                                    : AppColors.textPrimaryLight)
                               : (isDark
-                                  ? AppColors.textSecondaryDark
-                                  : AppColors.textSecondaryLight),
+                                    ? AppColors.textSecondaryDark
+                                    : AppColors.textSecondaryLight),
                         ),
                       ),
                     ),
@@ -226,7 +229,9 @@ class _SocialIcon extends StatelessWidget {
             child: Icon(
               icon,
               size: 18,
-              color: isDark ? AppColors.textSecondaryDark : AppColors.textSecondaryLight,
+              color: isDark
+                  ? AppColors.textSecondaryDark
+                  : AppColors.textSecondaryLight,
             ),
           ),
         ),
@@ -236,10 +241,7 @@ class _SocialIcon extends StatelessWidget {
 }
 
 class SidebarSection {
-  const SidebarSection({
-    required this.icon,
-    required this.label,
-  });
+  const SidebarSection({required this.icon, required this.label});
 
   final IconData icon;
   final String label;

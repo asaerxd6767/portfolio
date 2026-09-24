@@ -57,10 +57,7 @@ class _FadeInOnScrollState extends State<FadeInOnScroll>
   Widget build(BuildContext context) {
     return FadeTransition(
       opacity: _fadeAnimation,
-      child: SlideTransition(
-        position: _slideAnimation,
-        child: widget.child,
-      ),
+      child: SlideTransition(position: _slideAnimation, child: widget.child),
     );
   }
 }
@@ -95,8 +92,10 @@ class _AnimatedCounterState extends State<AnimatedCounter>
   void initState() {
     super.initState();
     _controller = AnimationController(vsync: this, duration: widget.duration);
-    _animation = Tween<double>(begin: 0, end: widget.target.toDouble())
-        .animate(CurvedAnimation(parent: _controller, curve: Curves.easeOut));
+    _animation = Tween<double>(
+      begin: 0,
+      end: widget.target.toDouble(),
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOut));
   }
 
   @override

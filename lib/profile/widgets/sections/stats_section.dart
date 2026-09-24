@@ -14,7 +14,7 @@ class StatsSection extends StatelessWidget {
     return FadeInOnScroll(
       child: Padding(
         padding: EdgeInsets.symmetric(
-          horizontal: isMobile ? 20 : 48,
+          horizontal: isMobile ? 20 : 32,
           vertical: 16,
         ),
         child: isMobile ? _buildMobileGrid(context) : _buildDesktopRow(context),
@@ -23,36 +23,39 @@ class StatsSection extends StatelessWidget {
   }
 
   Widget _buildDesktopRow(BuildContext context) {
-    return Row(
-      children: [
-        _StatItem(
-          label: 'Problems Solved',
-          value: '650+',
-          icon: Icons.code,
-          description: 'Codeforces & LeetCode',
-        ),
-        const SizedBox(width: 16),
-        _StatItem(
-          label: 'Students Mentored',
-          value: '30+',
-          icon: Icons.people_outline,
-          description: 'ICPC MNU Community',
-        ),
-        const SizedBox(width: 16),
-        _StatItem(
-          label: 'Batch Represented',
-          value: '400+',
-          icon: Icons.school_outlined,
-          description: 'Student Representative',
-        ),
-        const SizedBox(width: 16),
-        _StatItem(
-          label: 'Projects Built',
-          value: '5+',
-          icon: Icons.rocket_launch_outlined,
-          description: 'Shipped & In Progress',
-        ),
-      ],
+    return SingleChildScrollView(
+      scrollDirection: .horizontal,
+      child: Row(
+        children: [
+          _StatItem(
+            label: 'Problems Solved',
+            value: '650+',
+            icon: Icons.code,
+            description: 'Codeforces & LeetCode',
+          ),
+          const SizedBox(width: 16),
+          _StatItem(
+            label: 'Students Mentored',
+            value: '30+',
+            icon: Icons.people_outline,
+            description: 'ICPC MNU Community',
+          ),
+          const SizedBox(width: 16),
+          _StatItem(
+            label: 'Batch Represented',
+            value: '400+',
+            icon: Icons.school_outlined,
+            description: 'Student Representative',
+          ),
+          const SizedBox(width: 16),
+          _StatItem(
+            label: 'Projects Built',
+            value: '5+',
+            icon: Icons.rocket_launch_outlined,
+            description: 'Shipped & In Progress',
+          ),
+        ],
+      ),
     );
   }
 
@@ -128,7 +131,6 @@ class _StatItem extends StatelessWidget {
         children: [
           Container(
             width: 40,
-            height: 40,
             decoration: BoxDecoration(
               color: AppColors.accent.withValues(alpha: isDark ? 0.2 : 0.1),
               borderRadius: BorderRadius.circular(10),
@@ -148,13 +150,17 @@ class _StatItem extends StatelessWidget {
             label,
             style: theme.textTheme.bodyMedium?.copyWith(
               fontWeight: FontWeight.w600,
-              color: isDark ? AppColors.textPrimaryDark : AppColors.textPrimaryLight,
+              color: isDark
+                  ? AppColors.textPrimaryDark
+                  : AppColors.textPrimaryLight,
             ),
           ),
           Text(
             description,
             style: theme.textTheme.bodySmall?.copyWith(
-              color: isDark ? AppColors.textSecondaryDark : AppColors.textSecondaryLight,
+              color: isDark
+                  ? AppColors.textSecondaryDark
+                  : AppColors.textSecondaryLight,
             ),
           ),
         ],

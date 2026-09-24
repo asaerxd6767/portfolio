@@ -93,9 +93,7 @@ class _TypingAnimatedTextState extends State<TypingAnimatedText>
           opacity: _cursorController,
           child: Text(
             '|',
-            style: widget.style?.copyWith(
-              fontWeight: FontWeight.w300,
-            ),
+            style: widget.style?.copyWith(fontWeight: FontWeight.w300),
           ),
         ),
       ],
