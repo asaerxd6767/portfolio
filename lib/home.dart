@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'profile/presentation/profile.dart';
-
-import 'constants/Themes/dark_theme.dart';
-import 'constants/Themes/light_theme.dart';
+import 'core/theme/app_theme.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -11,19 +9,11 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: _withAppFont(lightMode),
-      darkTheme: _withAppFont(darkMode),
+      title: 'Asser Mohammed — Flutter Developer',
+      theme: AppTheme.light(),
+      darkTheme: AppTheme.dark(),
       themeMode: ThemeMode.system,
-      home: const Scaffold(body: ProfileScreen()),
-    );
-  }
-
-  ThemeData _withAppFont(ThemeData theme) {
-    return theme.copyWith(
-      textTheme: theme.textTheme.apply(fontFamily: 'JetBrainsMono'),
-      primaryTextTheme: theme.primaryTextTheme.apply(
-        fontFamily: 'JetBrainsMono',
-      ),
+      home: const ProfileScreen(),
     );
   }
 }
